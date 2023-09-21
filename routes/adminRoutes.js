@@ -6,6 +6,9 @@ const adminController = require('../controllers/adminController');
 // @GET /admin
 router.get('/', adminController.getAdmin);
 
+// @POST /admin
+router.post('/', adminController.postCancion);
+
 // @GET /admin/crear
 router.get('/crear', adminController.getAdminCreate);
 
