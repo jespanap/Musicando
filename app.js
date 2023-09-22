@@ -10,7 +10,7 @@ app.set('view engine', 'ejs');
 //implementando o requiriendo la ruta "main"
 const adminRoutes = require('./routes/adminRoutes');
 //definiendo la ruta "main"
-app.use('/admin', adminRoutes);
+app.use(adminRoutes);
 
 //middlewares
 app.use(express.urlencoded({ extended: true }));

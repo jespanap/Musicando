@@ -8,11 +8,28 @@ module.exports = (sequelize, DataType) => {
             primaryKey: true,
             autoIncrement: true
         },
-        nombre: {
-
+        titulo: {
+            type: DataType.VARCHAR(45),
+            allowNull: false
         },
-        apellido: {
-
+        duracion: {
+            type: DataType.INTEGER(11),
+            allowNull : false
+        },
+        genero_id:{
+            type: DataType.INTEGER,
+            primaryKey: true,
+            autoIncrement: true
+        },
+        album_id:{
+            type: DataType.INTEGER,
+            primaryKey: true,
+            autoIncrement: true
+        },
+        artista_id:{
+            type: DataType.INTEGER,
+            primaryKey: true,
+            autoIncrement: true
         }
     }
 
@@ -24,13 +41,22 @@ module.exports = (sequelize, DataType) => {
     const Canciones = sequlize.define(alias, cols, config);
 
     Canciones.associate = models => {
-        Canciones.belongsTo(models.Canciones, {
+        Canciones.hasMany(models.Canciones, {
             as: 'canciones',
             timestamps: false,
             foreignKey: 'artista_id'
+        }),
+        Canciones.hasMany(models.Canciones, {
+            as: 'canciones',
+            timestamps: false,
+            foreignKey: 'album_id'
+        }),
+        Canciones.hasMany(models.Canciones, {
+            as: 'canciones',
+            timestamps: false,
+            foreignKey: 'generos_id'
         });
     }
-
     return Canciones;
 
 }

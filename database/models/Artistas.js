@@ -9,10 +9,12 @@ module.exports = (sequelize, DataType) => {
             autoIncrement: true
         },
         nombre: {
-
+            type: DataType.VARCHAR(45),
+            allowNull: false
         },
         apellido: {
-
+            type: DataType.VARCHAR(45),
+            allowNull: false
         }
     }
 

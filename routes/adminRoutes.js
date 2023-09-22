@@ -3,13 +3,13 @@ const router = express.Router();
 
 const adminController = require('../controllers/adminController');
 
-// @GET /admin
+// @GET /  "admin"  en realidad esta llegando al index o home
 router.get('/', adminController.getAdmin);
 
 // @POST /admin
 router.post('/', adminController.postCancion);
 
-// @GET /admin/crear
+// @GET /crear
 router.get('/crear', adminController.getAdminCreate);
 
 // @GET /admin/:id
