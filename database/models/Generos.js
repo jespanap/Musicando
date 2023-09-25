@@ -9,7 +9,7 @@ module.exports = (sequelize, DataType) => {
             autoIncrement: true
         },
         name: {
-            type: DataType.VARCHAR(45),
+            type: DataType.STRING,
             allowNull: false
         },
     }
@@ -19,10 +19,10 @@ module.exports = (sequelize, DataType) => {
         timestamps: false
     }
 
-    const Generos = sequlize.define(alias, cols, config);
+    const Generos = sequelize.define(alias, cols, config);
 
     Generos.associate = models => {
-        Generos.belongsTo(models.Canciones, {
+        Generos.hasMany(models.Canciones, {
             as: 'canciones',
             timestamps: false,
             foreignKey: 'genero_id'

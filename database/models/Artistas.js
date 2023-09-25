@@ -9,11 +9,11 @@ module.exports = (sequelize, DataType) => {
             autoIncrement: true
         },
         nombre: {
-            type: DataType.VARCHAR(45),
+            type: DataType.STRING,
             allowNull: false
         },
         apellido: {
-            type: DataType.VARCHAR(45),
+            type: DataType.STRING,
             allowNull: false
         }
     }
@@ -23,10 +23,10 @@ module.exports = (sequelize, DataType) => {
         timestamps: false
     }
 
-    const Artistas = sequlize.define(alias, cols, config);
+    const Artistas = sequelize.define(alias, cols, config);
 
     Artistas.associate = models => {
-        Artistas.belongsTo(models.Canciones, {
+        Artistas.hasMany(models.Canciones, {
             as: 'canciones',
             timestamps: false,
             foreignKey: 'artista_id'

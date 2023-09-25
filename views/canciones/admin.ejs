@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ADMIN</title>
+    <script src="https://kit.fontawesome.com/34a219943a.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+    <div class="first">
+        <h1>Lista de canciones</h1>
+        <a href="/crear"><i class="fa-solid fa-square-plus"></i> Crear Canción</a>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Título</th>
+                <th>Duración</th>
+                <th>Género</th>
+                <th>Álbum</th>
+                <th>Artista</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for (const cancion of canciones) { %>
+                <tr>
+                    <td><%= cancion.titulo %></td>
+                    <td><%= cancion.duracion %> segundos</td>
+                    <td><%= cancion.genero_id %></td> 
+                    <td><%= cancion.album_id %></td> 
+                    <td><%= cancion.artista_id %></td> 
+                    <td>
+                        <a href="/admin/editar-cancion/<%= cancion.id %>"><i class="fas fa-edit"></i></a>
+                        <a href="/admin/eliminar-cancion/<%= cancion.id %>"><i class="fas fa-trash-alt"></i></a>
+                    </td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
+</body>
+</html>
+
