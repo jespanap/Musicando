@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="admin-create.css" />
-    <title>Crear canción</title>
 </head>
 
 <body>
@@ -15,41 +15,38 @@
 
         <label for="duracion">Duración (segundos):</label>
         <input type="number" name="duracion" required /><br />
-
+        
         <label for="genero">Género:</label>
-        <select name="genero" required>
-            <option value="Opción 1">Rock</option>
-            <option value="Opción 2">Pop</option>
-            <option value="Opción 3">Blues</option>
-            <option value="Opción 4">Jazz</option>
-            <option value="Opción 5">R&B</option>
-            <option value="Opción 6">Hip-Hop</option>
-            <option value="Opción 7">Country</option>
-            <option value="Opción 8">Electrónica</option>
-            <option value="Opción 9">Reggae</option>
-            <option value="Opción 10">Folk</option>
-            <option value="Opción 11">Clásica</option>
-            <option value="Opción 12">Soul</option>
-            <option value="Opción 13">Funk</option>
-            <option value="Opción 14">Metal</option>
-            <option value="Opción 15">Punk</option>
-            <option value="Opción 16">Indie</option>
-            <option value="Opción 17">Reggaetón</option>
-            <option value="Opción 18">Dance</option>
-            <option value="Opción 19">Alternativa</option>
-            <option value="Opción 20">Otro</option>
-        </select><br />
-
+        <select id="genero" name="genero" required>
+          <option value="" disabled selected>Selecciona un género</option>
+          <% generos.forEach((genero) => { %>
+            <option value="<%= genero.id %>">
+              <%= genero.name %>
+            </option>
+          <% }); %>
+        </select>
+        
         <label for="album">Álbum:</label>
-        <input type="text" name="album" required /><br />
-
+        <select id="album" name="album">
+          <option value="" disabled>Selecciona un álbum</option>
+          <% albumes.forEach((album) => { %>
+            <option value="<%= album.id %>">
+              <%= album.nombre %>
+            </option>
+          <% }); %>
+        </select>
+        
         <label for="artista">Artista:</label>
-        <input type="text" name="artista" required /><br />
-
-        <label for="apellido_artista">Apellido del Artista:</label>
-        <input type="text" name="apellido_artista" required /><br />
-
-        <button type="submit">Crear Canción</button>
+        <select id="artista" name="artista" required>
+          <option value="" disabled selected>Selecciona un artista</option>
+          <% artistas.forEach((artista) => { %>
+            <option value="<%= artista.id %>">
+              <%= artista.nombre %> <%= artista.apellido %>
+            </option>
+          <% }); %>
+        </select>
+        <input type="submit" value="Crear" />
     </form>
 </body>
+
 </html>

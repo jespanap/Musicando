@@ -1,63 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="admin-create.css" />
+    <style>
+        /* Reset de estilos */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    /* Estilos para el cuerpo de la página */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      padding: 20px;
+      text-align: center;
+    }
+    
+    /* Estilos para el formulario */
+    form {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      max-width: 400px;
+      margin: 0 auto;
+    }
+    
+    /* Estilos para las etiquetas de los campos */
+    label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 5px;
+    }
+    
+    /* Estilos para los campos de entrada de texto y número */
+    input[type="text"],
+    input[type="number"],
+    select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      font-size: 16px;
+    }
+    
+    /* Estilos para el botón de enviar */
+    input[type="submit"] {
+      background-color: #007bff;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 3px;
+      font-size: 18px;
+      cursor: pointer;
+    }
+    
+    /* Estilos adicionales para el botón al pasar el ratón sobre él */
+    input[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+    
+    /* Estilos para las opciones del select */
+    select option {
+      padding: 5px;
+      font-size: 14px;
+    }
+    
+    /* Estilos adicionales para el select cuando está enfocado */
+    select:focus {
+      outline: none;
+      border-color: #007bff; /* Cambia el color del borde al enfocar */
+    }
+    
+    </style>
+
 </head>
+
+
+
 <body>
-    <form action="" method="">
-        <div>
-            <label for="titulo">Título</label>
-            <input type="text" name="titulo" id="titulo" required>
-        </div>
+    <form action="/?_method=PUT" method="POST">
+        <input type="hidden" name="id" value="<%= cancion.id %>">
 
-        <div>
-            <label for="duracion">Duración</label>
-            <input type="text" name="duracion" id="duracion" pattern="[0-9]{2}:[0-5][0-9]" placeholder="Ejemplo: 03:45"
-                required>
-        </div>
+        <label for="titulo">Título de la Canción:</label>
+        <input type="text" name="titulo" value="<%= cancion.titulo %>" required /><br />
 
-        <div>
-            <label for="genero">Género</label>
-            <select name="genero" id="genero" required>
-                <option value="1">Rock</option>
-                <option value="2">Pop</option>
-                <option value="3">Blues</option>
-                <option value="4">Jazz</option>
-                <option value="5">R&B</option>
-                <option value="6">Hip-Hop</option>
-                <option value="7">Country</option>
-                <option value="8">Electrónica</option>
-                <option value="9">Reggae</option>
-                <option value="10">Folk</option>
-                <option value="11">Clásica</option>
-                <option value="12">Soul</option>
-                <option value="13">Funk</option>
-                <option value="14">Metal</option>
-                <option value="15">Punk</option>
-                <option value="16">Indie</option>
-                <option value="17">Reggaetón</option>
-                <option value="18">Dance</option>
-                <option value="19">Alternativa</option>
-                <option value="20">Latina</option>
-            </select>
-        </div>
+        <label for="duracion">Duración (segundos):</label>
+        <input type="number" name="duracion" value="<%= cancion.duracion %>" required /><br />
+
+        <label for="genero">Género:</label>
+        <select id="genero" name="genero" required>
+            <option value="" disabled selected>Selecciona un género</option>
+            <% generos.forEach((genero)=> { %>
+                <option value="<%= genero.id %>" <%=genero.id===cancion.genero_id ? 'selected' : '' %>>
+                    <%= genero.name %>
+                </option>
+                <% }); %>
+        </select>
+
+        <label for="album">Álbum:</label>
+        <select id="album" name="album">
+            <option value="" disabled>Selecciona un álbum</option>
+            <% albumes.forEach((album)=> { %>
+                <option value="<%= album.id %>" <%=album.id===cancion.album_id ? 'selected' : '' %>>
+                    <%= album.nombre %>
+                </option>
+                <% }); %>
+        </select>
+
+        <label for="artista">Artista:</label>
+        <select id="artista" name="artista" required>
+            <option value="" disabled selected>Selecciona un artista</option>
+            <% artistas.forEach((artista)=> { %>
+                <option value="<%= artista.id %>" <%=artista.id===cancion.artista_id ? 'selected' : '' %>>
+                    <%= artista.nombre%>
+                        <%= artista.apellido %>
+                </option>
+                <% }); %>
+        </select>
+        <input type="submit" value="Editar" />
 
 
-        <div>
-            <label for="album">Álbum</label>
-            <input type="text" name="album" id="album" required>
-        </div>
-
-        <div>
-            <label for="artista">Artista</label>
-            <input type="text" name="artista" id="artista" required>
-        </div>
-
-        <button>Actualizar</button>
-        <button>Eliminar</button>
 
     </form>
 </body>
+
 </html>

@@ -5,7 +5,7 @@ body {
     background-color: #f0f0f0;
 }
 
-.first{
+.first {
     text-align: center;
 }
 
@@ -59,3 +59,21 @@ i {
     text-align: center;
 }
 
+.fa-trash-alt {
+    color: #db3934;
+}
+
+/* Estilo para quitar el fondo de input y button */
+input,
+button {
+    background-color: transparent;
+    /* Fondo transparente */
+    border: none;
+    /* Sin borde */
+    outline: none;
+    /* Sin contorno/foco al hacer clic */
+}
+
+.last-box {
+    display: flex;
+}

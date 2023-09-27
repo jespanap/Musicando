@@ -39,7 +39,8 @@ label {
 
 /* Estilos para los campos de entrada de texto y número */
 input[type="text"],
-input[type="number"] {
+input[type="number"],
+select {
   width: 100%;
   padding: 10px;
   margin-bottom: 15px;
@@ -49,7 +50,7 @@ input[type="number"] {
 }
 
 /* Estilos para el botón de enviar */
-button[type="submit"] {
+input[type="submit"] {
   background-color: #007bff;
   color: #fff;
   padding: 10px 20px;
@@ -60,27 +61,18 @@ button[type="submit"] {
 }
 
 /* Estilos adicionales para el botón al pasar el ratón sobre él */
-button[type="submit"]:hover {
+input[type="submit"]:hover {
   background-color: #0056b3;
-}
-/* Estilos para el campo de género (select) */
-select[name="genero"] {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-  font-size: 16px;
 }
 
 /* Estilos para las opciones del select */
-select[name="genero"] option {
+select option {
   padding: 5px;
   font-size: 14px;
 }
 
 /* Estilos adicionales para el select cuando está enfocado */
-select[name="genero"]:focus {
+select:focus {
   outline: none;
   border-color: #007bff; /* Cambia el color del borde al enfocar */
 }

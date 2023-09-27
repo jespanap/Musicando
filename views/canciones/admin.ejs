@@ -9,7 +9,7 @@
 <body>
     <div class="first">
         <h1>Lista de canciones</h1>
-        <a href="/crear"><i class="fa-solid fa-square-plus"></i> Crear Canción</a>
+        <a href="/crear"><i class="fa-solid fa-circle-plus"></i> Crear Canción</a>
     </div>
     <table>
         <thead>
@@ -30,9 +30,15 @@
                     <td><%= cancion.genero_id %></td> 
                     <td><%= cancion.album_id %></td> 
                     <td><%= cancion.artista_id %></td> 
-                    <td>
-                        <a href="/admin/editar-cancion/<%= cancion.id %>"><i class="fas fa-edit"></i></a>
-                        <a href="/admin/eliminar-cancion/<%= cancion.id %>"><i class="fas fa-trash-alt"></i></a>
+                    <td class="last-box">
+                        <a href="/editar-cancion/<%= cancion.id %>"><i class="fas fa-edit"></i></a>
+                        <form action="/canciones/<%= cancion.id %>?_method=DELETE" method="post">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <button type="submit" class="delete-button">
+                              <i class="fas fa-trash-alt"></i> <!-- Icono de eliminación -->
+                            </button>
+                          </form>
+                          
                     </td>
                 </tr>
             <% } %>
