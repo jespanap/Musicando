@@ -28,8 +28,6 @@ module.exports = (sequelize, DataType) => {
 
     Albumes.associate = models => {
         Albumes.hasMany(models.Canciones, {
-            as: 'canciones',
-            timestamps: false,
             foreignKey: 'album_id'
         });
     }

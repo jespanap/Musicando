@@ -12,6 +12,9 @@ router.post('/', adminController.postCancion);
 // @GET /crear 
 router.get('/crear', adminController.getAdminCreate); 
 
+// @GET /detail/:id
+router.get('/detail/:id', adminController.getDetail);
+
 // @GET /editar-cancion/:id -- Aqui renderizo el editar
 router.get('/editar-cancion/:id', adminController.getAdminEdit); 
 

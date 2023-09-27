@@ -27,10 +27,11 @@
                 <tr>
                     <td><%= cancion.titulo %></td>
                     <td><%= cancion.duracion %> segundos</td>
-                    <td><%= cancion.genero_id %></td> 
-                    <td><%= cancion.album_id %></td> 
-                    <td><%= cancion.artista_id %></td> 
+                    <td><%= cancion.Genero.name %></td> 
+                    <td><%= cancion.Albume.nombre %></td> 
+                    <td><%= cancion.Artista.nombre %></td> 
                     <td class="last-box">
+                        <a href="/detail/<%= cancion.id %>"><i class="fa-solid fa-circle-info black-icon"></i></a>
                         <a href="/editar-cancion/<%= cancion.id %>"><i class="fas fa-edit"></i></a>
                         <form action="/canciones/<%= cancion.id %>?_method=DELETE" method="post">
                             <input type="hidden" name="_method" value="DELETE">

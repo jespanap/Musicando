@@ -3,18 +3,57 @@ const { Canciones, Albumes, Artistas, Generos } = require("../database/models");
 const controller = {
   getAdmin: async (req, res) => {
     try {
+      // Obtén todas las canciones con sus asociaciones
+      const cancionesList = await Canciones.findAll({
+        include: [
+          { model: Generos },
+          { model: Artistas },
+          { model: Albumes },
+        ],
+      });
+
+      // Obtén listas de géneros, artistas y álbumes
       const generosList = await Generos.findAll();
       const artistasList = await Artistas.findAll();
       const albumesList = await Albumes.findAll();
 
-      const canciones = await Canciones.findAll({
-        raw: true,
+      res.render('admin', {
+        title: 'Listado De Canciones',
+        canciones: cancionesList,
+        generos: generosList,
+        artistas: artistasList,
+        albumes: albumesList,
+      });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ status: 'error', message: 'Error al cargar la página de administración' });
+    }
+  },
+  
+
+  getDetail: async (req, res) => {
+    try {
+      const { id } = req.params;
+
+      // Busca la canción por su ID
+      const cancion = await Canciones.findByPk(id, {
+        include: [
+          // Incluye las asociaciones necesarias para obtener los nombres de género, artista y álbum
+          { model: Generos },
+          { model: Artistas },
+          { model: Albumes },
+        ],
       });
 
-      res.render("admin", { canciones, generosList, artistasList, albumesList });
+      if (!cancion) {
+        return res.status(404).json({ message: 'Canción no encontrada' });
+      }
+
+      // Renderiza la vista "admin-detail" y pasa los datos de la canción
+      res.render('admin-detail', { cancion });
     } catch (error) {
-      res.render("admin", { canciones: [], generosList: [], artistasList: [], albumesList: [] });
-      console.log(error);
+      console.error(error);
+      res.status(500).json({ status: 'error', message: 'Error al cargar el detalle de la canción' });
     }
   },
 

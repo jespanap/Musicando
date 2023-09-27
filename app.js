@@ -24,9 +24,12 @@ app.set('views', [
 ])
 
 /* --- API Routers --- */
-const cancionesApiRoutes = require("./routes/api/cancionesApiRoutes")
+const cancionesApiRoutes = require("./routes/api/cancionesApiRoutes");
+const generosApiRoutes = require("./routes/api/generosApiRoutes")
+
 //REST API ENDPOINTS
 app.use('/api/canciones', cancionesApiRoutes);
+app.use('/api/generos', generosApiRoutes);
 
 
 

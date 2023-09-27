@@ -63,6 +63,11 @@ i {
     color: #db3934;
 }
 
+.fa-trash-alt:hover {
+    color: rgb(184, 35, 35);
+    transition: color 0.3s;
+}
+
 /* Estilo para quitar el fondo de input y button */
 input,
 button {
@@ -77,3 +82,12 @@ button {
 .last-box {
     display: flex;
 }
+
+/* Estilo para el primer icono (negro) */
+.black-icon {
+    color: black;
+}
+ .black-icon:hover{
+    color: rgb(29, 29, 29);
+    transition: color 0.3s;
+ }

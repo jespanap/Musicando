@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalle de Canción</title>
+    <link rel="stylesheet" href="admin-detail.css"> <!-- Agrega aquí tu hoja de estilos específica para esta vista si la tienes -->
+</head>
+
+<style>body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            text-align: center;
+        }
+        
+        h1 {
+            margin-top: 20px;
+            color: #333;
+        }
+        
+        .song-details {
+            background-color: white;
+            width: 60%;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+        
+        .song-details p {
+            margin: 10px 0;
+        }
+        
+        a {
+            text-decoration: none;
+            color: #007bff;
+            transition: color 0.3s;
+            margin: 10px;
+        }
+        
+        a:hover {
+            color: #0056b3;
+        }
+        </style>
+
+<body>
+    <h1>Detalle de Canción</h1>
+    <div class="song-details">
+        <p><strong>Título:</strong> <%= cancion.titulo %></p>
+        <p><strong>Duración:</strong> <%= cancion.duracion %> segundos</p>
+        <p><strong>Género:</strong> <%= cancion.Genero.name  %></p>
+        <p><strong>Álbum:</strong> <%= cancion.Albume.nombre %></p>
+        <p><strong>Artista:</strong> <%= cancion.Artista.nombre %></p>
+    </div>
+    <a href="/editar-cancion/<%= cancion.id %>">Editar Canción</a>
+    <a href="/">Volver a la Lista</a>
+</body>
+</html>
