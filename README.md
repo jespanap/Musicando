@@ -1,27 +1,30 @@
 
 # Musicando
 
-Un CRUD de canciones con API RESTful
+**Un CRUD de canciones con API RESTful**
 
 Musicando es un proyecto de creación de canciones mediante artistas, álbumes y géneros ya predispuestos en la base de datos. Tiene las vistas donde se puede ver el listado de las canciones, editar las mismas, una de detalle de canción y permite eliminarlas incluso.
 
 También se hizo el uso de API RESTful para crear endpoints que permitan visualizar la cantidad de canciones con todas sus propiedades y los géneros incluso.
 
-Tecnologías utilizadas
+## Tecnologías utilizadas
 
-ExpressJS
-NodeJS
-JavaScript
-EJS
-HTML
-CSS
-MySQL
-Sequelize
-Instalación
+* **ExpressJS**
+* **NodeJS**
+* **JavaScript**
+* **EJS**
+* **HTML**
+* **CSS**
+* **MySQL**
+* **Sequelize**
+
+## Instalación
 
 Para instalar Musicando, siga estos pasos:
 
-Clone el repositorio de GitHub:
+1. Clone el repositorio de GitHub:
+
+
 git clone https://github.com/jespanap/Musicando.git
 Instale las dependencias:
 npm install
